@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="shoe.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="onepiece.png" alt="One Piece Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="trending.html">Trending</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Your Cart</h1>
+        <div id="cart-items">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        <div id="cart-summary">
+            <h2>Summary</h2>
+            <p id="total-price">Total: RS 0</p>
+            <button id="checkout">Proceed to Checkout</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="logo">
+            <a href="#"><img src="onepiece.png" alt=""></a>
+        </div>
+        <div class="list">
+            <h2>Services</h2>
+            <ul>
+                <li>Blog</li>
+                <li>Contact</li>
+                <li>Affiliate</li>
+                <li>Work</li>
+            </ul>
+        </div>
+        <div class="list">
+            <h2>Pages</h2>
+            <ul>
+                <li>About</li>
+                <li>Privacy Policy</li>
+                <li>Terms & Conditions</li>
+                <li>Disclaimer</li>
+            </ul>
+        </div>
+        <div class="list" id="social">
+            <h2>Follow</h2>
+            <ul>
+                <li><i class="fa-brands fa-youtube"></i></li>
+                <li><i class="fa-brands fa-facebook"></i></li>
+                <li><i class="fa-brands fa-instagram"></i></li>
+                <li><i class="fa-brands fa-twitter"></i></li>
+            </ul>
+        </div>
+    </footer>
+    <hr>
+    <div id="copyright"><h4>&#169; Copyright @2023. All Rights Reserved. Designed By S. MOHAMMED SUHAIL.</h4></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartDiv = document.getElementById('cart-items');
+            const totalPriceDiv = document.getElementById('total-price');
+            
+            let totalPrice = 0;
+    
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `<h4>${item.name}</h4><h3>RS ${item.price}</h3>`;
+                cartDiv.appendChild(itemDiv);
+                totalPrice += item.price;
+            });
+    
+            totalPriceDiv.innerText = `Total: RS ${totalPrice}`;
+        });
+    </script>
+    
+
+
+
+</body>
+</html>
